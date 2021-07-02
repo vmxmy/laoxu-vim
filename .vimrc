@@ -124,3 +124,6 @@ set encoding=utf-8
 
 "共享剪切板
 set clipboard=unnamed
+
+" 运行文件  
+map <F5> :w<cr>:r!python3 %<cr> 

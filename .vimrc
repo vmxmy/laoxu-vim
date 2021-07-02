@@ -85,6 +85,7 @@ Plugin 'Lokaltog/vim-powerline'
 Plugin 'octol/vim-cpp-enhanced-highlight'
 Plugin 'Raimondi/delimitMate'
 Plugin 'yianwillis/vimcdoc'
+Plugin 'davidhalter/jedi-vim'
 " 插件列表结束
 call vundle#end()
 filetype plugin indent on

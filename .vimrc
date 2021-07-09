@@ -49,8 +49,18 @@ set ruler
 "去除vi的一致性
 set nocompatible
 
+"""""""""""""""""""键盘映射""""""""""""""""""""""
 "设置键盘映射，通过空格设置折叠
 nnoremap <space> @=((foldclosed(line('.')<0)?'zc':'zo'))<CR>
+
+"设置键盘映射，jj =Esc
+imap jj <Esc>
+
+"在Normal Mode和Visual/Select Mode下，利用Tab键和Shift-Tab键来缩进文本：
+nmap <tab> V>
+nmap <s-tab> V<
+vmap <tab> >gv
+vmap <s-tab> <gv
 """"""""""""""""""""""""""""""""""""""""""""""
 "不要闪烁
 set novisualbell
@@ -86,13 +96,28 @@ Plugin 'octol/vim-cpp-enhanced-highlight'
 Plugin 'Raimondi/delimitMate'
 Plugin 'yianwillis/vimcdoc'
 Plugin 'davidhalter/jedi-vim'
+Plugin 'preservim/nerdtree'
+Plugin 'JamshedVesuna/vim-markdown-preview'
 " 插件列表结束
 call vundle#end()
 filetype plugin indent on
 
+" 运行文件
+map <F5> :w<cr>:r!python3 %<cr>
+
 " 配色方案
-"set background=dark
-colorscheme morning
+set background=dark
+
+if $COLORTERM == 'truecolor'
+    set termguicolors
+    colorscheme solarized8
+else
+    set term=xterm
+    set t_Co=256
+    colorscheme solarized8
+endif
+
+"colorscheme solarized
 "colorscheme molokai
 "colorscheme phd
 
@@ -126,5 +151,5 @@ set encoding=utf-8
 "共享剪切板
 set clipboard=unnamed
 
-" 运行文件  
-map <F5> :w<cr>:r!python3 %<cr> 
+"设置markdown渲染preview
+let vim_markdown_preview_github=1
